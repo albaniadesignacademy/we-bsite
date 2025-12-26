@@ -1,4 +1,5 @@
 
+
 export enum Language {
   AL = 'AL',
   EN = 'EN',
@@ -62,12 +63,15 @@ export interface FAQItem {
 
 export interface ContactContent {
   title: string;
+  subtitle: string;
   address: string;
   email: string;
   phone: string;
   instagram: string;
-  chatTitle: string;
-  chatPlaceholder: string;
+  visitLabel: string;
+  emailLabel: string;
+  phoneLabel: string;
+  followLabel: string;
 }
 
 export interface Translation {

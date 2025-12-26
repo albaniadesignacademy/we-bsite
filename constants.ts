@@ -1,4 +1,5 @@
 
+
 import { Language, Translation } from './types';
 
 export const COLORS = {
@@ -135,12 +136,15 @@ export const TRANSLATIONS: Record<Language, Translation> = {
     ],
     contact: {
       title: "Na Kontaktoni",
+      subtitle: "Jemi këtu për t'ju përgjigjur pyetjeve tuaja. Na kontaktoni përmes kanaleve të mëposhtme ose përdorni chat-in live në këndin e poshtëm djathtas.",
       address: "Rruga e Bogdaneve, 1001 Tiranë",
       email: "elsidapepa@yahoo.com",
       phone: "+355 68 241 2137",
       instagram: "@albanian_design_academy",
-      chatTitle: "Bisedoni me ADA AI",
-      chatPlaceholder: "Pyesni për regjistrimet..."
+      visitLabel: "NA VIZITONI",
+      emailLabel: "NA SHKRUANI",
+      phoneLabel: "TELEFON / WHATSAPP",
+      followLabel: "NA NDIQNI"
     }
   },
   [Language.EN]: {
@@ -216,12 +220,15 @@ export const TRANSLATIONS: Record<Language, Translation> = {
     ],
     contact: {
       title: "Contact Us",
+      subtitle: "We are here to answer your questions. Reach out to us via any of the channels below or use the live chat in the bottom right corner.",
       address: "Rruga e Bogdaneve, 1001 Tirana",
       email: "elsidapepa@yahoo.com",
       phone: "+355 68 241 2137",
       instagram: "@albanian_design_academy",
-      chatTitle: "Chat with ADA AI",
-      chatPlaceholder: "Ask about enrollment..."
+      visitLabel: "VISIT US",
+      emailLabel: "EMAIL US",
+      phoneLabel: "CALL / WHATSAPP",
+      followLabel: "FOLLOW US"
     }
   },
   [Language.IT]: {
@@ -297,12 +304,15 @@ export const TRANSLATIONS: Record<Language, Translation> = {
     ],
     contact: {
       title: "Contattaci",
+      subtitle: "Siamo qui per rispondere alle tue domande. Contattaci tramite i canali sottostanti o usa la live chat in basso a destra.",
       address: "Rruga e Bogdaneve, 1001 Tirana",
       email: "elsidapepa@yahoo.com",
       phone: "+355 68 241 2137",
       instagram: "@albanian_design_academy",
-      chatTitle: "Chatta con ADA AI",
-      chatPlaceholder: "Chiedi informazioni sull'iscrizione..."
+      visitLabel: "VIENI A TROVARCI",
+      emailLabel: "SCRIVICI",
+      phoneLabel: "CHIAMA / WHATSAPP",
+      followLabel: "SEGUICI"
     }
   }
 };
