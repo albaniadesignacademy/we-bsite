@@ -75,7 +75,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       slogan: "ku ëndrrat bëhen realitet. ku kreativiteti bëhet art",
     },
     about: {
-      title: "Akademia e Dizajnit Shqiptar",
+      title: "Albanian Design Academy",
       description: "Për më shumë se 10 vite, ADA (Albanian Design Academy) ka qenë lider i padiskutueshëm në edukimin e modës në Shqipëri. E vendosur në zemër të Tiranës, akademia jonë ka ndërtuar një reputacion të fortë duke diplomuar mbi 100 studentë të suksesshëm që sot gëzojnë karriera premtuese. Ne ofrojmë rrugëtimin perfekt për këdo që ka pasion modën, pavarësisht eksperiencës së mëparshme.",
       structureTitle: "Struktura 2-Vjeçare",
       structure: "Programi ynë akademik zgjat 2 vite (Shtator - Qershor). Viti i parë është i dedikuar bazave: skicim, rrobaqepësi dhe merceologji (tekstile). Viti i dytë fokusohet në shprehjen artistike, realizimin e veshjeve komplekse nga skica në realitet dhe përgatitjen e portofolit profesional.",
@@ -243,7 +243,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       slogan: "dove i sogni diventano realtà. dove la creatività diventa arte",
     },
     about: {
-      title: "Accademia di Design Albanese",
+      title: "Albanian Design Academy",
       description: "Da oltre 10 anni, ADA (Albanian Design Academy) è leader indiscusso nell'educazione alla moda in Albania. Situata nel cuore di Tirana, la nostra accademia ha costruito una solida reputazione diplomando oltre 100 studenti di successo. Offriamo il percorso perfetto per chiunque abbia passione per la moda, indipendentemente dall'esperienza precedente.",
       structureTitle: "Struttura di 2 Anni",
       structure: "Il nostro programma accademico dura 2 anni (Settembre - Giugno). Il Primo Anno è dedicato alle basi: schizzo, cucito e merceologia (tessuti). Il Secondo Anno si concentra sull'espressione artistica, la realizzazione di capi complessi e la preparazione del portfolio professionale.",
