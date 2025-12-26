@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ADA Fashion School</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Bebas+Neue&family=Bodoni+Moda:opsz,wght@6..96,400;6..96,700&family=Cinzel:wght@400;700&family=Dancing+Script:wght@700&family=Inter:wght@300;400;600&family=Montserrat:wght@100;400;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Space+Mono&family=Syne:wght@400;800&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #111111;
+        color: #ffffff;
+        overflow-x: hidden;
+      }
+      .glass-panel {
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 24px;
+        transition: all 0.3s ease;
+      }
+      
+      /* New Realistic Glass for Modal */
+      .glass-modal {
+        background: rgba(20, 20, 20, 0.6);
+        backdrop-filter: blur(40px) saturate(180%);
+        -webkit-backdrop-filter: blur(40px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      }
+
+      /* Shape-conforming Yellow Glow on Hover */
+      .hover-glow:hover {
+        box-shadow: 0 0 25px rgba(228, 255, 26, 0.3);
+        border-color: rgba(228, 255, 26, 0.5);
+      }
+      
+      /* Font Classes */
+      .font-cinzel { font-family: 'Cinzel', serif; }
+      .font-playfair { font-family: 'Playfair Display', serif; }
+      .font-mono { font-family: 'Space Mono', monospace; }
+      .font-abril { font-family: 'Abril Fatface', cursive; }
+      .font-bebas { font-family: 'Bebas Neue', sans-serif; }
+      .font-bodoni { font-family: 'Bodoni Moda', serif; }
+      .font-dancing { font-family: 'Dancing Script', cursive; }
+      .font-syne { font-family: 'Syne', sans-serif; }
+      .font-montserrat { font-family: 'Montserrat', sans-serif; }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #111111;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #333;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #E4FF1A;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
