@@ -44,7 +44,7 @@ function App() {
       </main>
 
       <footer className="py-12 text-center text-gray-700 text-xs tracking-widest border-t border-white/5 uppercase font-mono">
-        &copy; 2025 Albanian Design Academy.<br/> Tirana, Albania
+        &copy; 2026 Albanian Design Academy.<br/> Tirana, Albania
       </footer>
     </div>
   );

@@ -1,5 +1,4 @@
 
-
 import { Language, Translation } from './types';
 
 export const COLORS = {
@@ -18,49 +17,17 @@ const TEACHER_IMAGES = [
   "https://pixvid.org/images/2025/12/25/52lAf.png"  // Flutura
 ];
 
-// Unified Student Showcase Data
-const SHOWCASE_DATA = [
-    { 
-        title: "Excellence", 
-        coverImage: "https://pixvid.org/images/2025/12/25/52zxI.png",
-        caption: "Milan Fashion Week from Ezgi Özalan"
-    },
-    { 
-        title: "Collection for Milano", 
-        coverImage: "https://pixvid.org/images/2025/12/25/52zFp.png",
-        caption: "Bukra Cani realizing her own theme perfectly"
-    },
-    { 
-        title: "Active Handwork", 
-        coverImage: "https://pixvid.org/images/2025/12/25/52gcj.png",
-        caption: "Student working with mannequin"
-    },
-    {
-        title: "Bridal Concept",
-        coverImage: "https://pixvid.org/images/2025/12/25/52gMJ.png",
-        caption: "Hand-stitched Embroidery"
-    },
-    {
-        title: "All in Black",
-        coverImage: "https://pixvid.org/images/2025/12/25/52zWD.png",
-        caption: "Megisa Margjegja for Tirana Fashion Week"
-    },
-    {
-        title: "Modern Colorism",
-        coverImage: "https://pixvid.org/images/2025/12/25/52zL0.png",
-        caption: "Ermelinda Metohu's Fabulence"
-    },
-    {
-        title: "Digital Design",
-        coverImage: "https://pixvid.org/images/2025/12/25/527Gt.png",
-        caption: "Working with CAD 3D"
-    },
-     {
-        title: "Textile Manipulation",
-        coverImage: "https://pixvid.org/images/2025/12/25/527zW.png",
-        caption: "Practical work is key"
-    }
-];
+// Reusable Image Links for Student Work
+const WORK_IMAGES = {
+    img1: "https://pixvid.org/images/2025/12/25/52zxI.png",
+    img2: "https://pixvid.org/images/2025/12/25/52zFp.png",
+    img3: "https://pixvid.org/images/2025/12/25/52gcj.png",
+    img4: "https://pixvid.org/images/2025/12/25/52gMJ.png",
+    img5: "https://pixvid.org/images/2025/12/25/52zWD.png",
+    img6: "https://pixvid.org/images/2025/12/25/52zL0.png",
+    img7: "https://pixvid.org/images/2025/12/25/527Gt.png",
+    img8: "https://pixvid.org/images/2025/12/25/527zW.png"
+};
 
 export const TRANSLATIONS: Record<Language, Translation> = {
   [Language.AL]: {
@@ -75,7 +42,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       slogan: "ku ëndrrat bëhen realitet. ku kreativiteti bëhet art",
     },
     about: {
-      title: "Albanian Design Academy",
+      title: "Akademia e Dizajnit Shqiptar",
       description: "Për më shumë se 10 vite, ADA (Albanian Design Academy) ka qenë lider i padiskutueshëm në edukimin e modës në Shqipëri. E vendosur në zemër të Tiranës, akademia jonë ka ndërtuar një reputacion të fortë duke diplomuar mbi 100 studentë të suksesshëm që sot gëzojnë karriera premtuese. Ne ofrojmë rrugëtimin perfekt për këdo që ka pasion modën, pavarësisht eksperiencës së mëparshme.",
       structureTitle: "Struktura 2-Vjeçare",
       structure: "Programi ynë akademik zgjat 2 vite (Shtator - Qershor). Viti i parë është i dedikuar bazave: skicim, rrobaqepësi dhe merceologji (tekstile). Viti i dytë fokusohet në shprehjen artistike, realizimin e veshjeve komplekse nga skica në realitet dhe përgatitjen e portofolit profesional.",
@@ -113,8 +80,17 @@ export const TRANSLATIONS: Record<Language, Translation> = {
     },
     work: {
       title: "Si është jeta këtu",
-      description: "Ky është një vështrim i shkurtër i jetës në akademinë tonë. Mbani mend, kjo është vetëm një fraksion i asaj që bëjmë këtu—përvoja reale është shumë më emocionuese, e mbushur me zhurmën e makinave dhe energjinë e krijimit.",
-      items: SHOWCASE_DATA
+      description: "Ky është një vështrim i shkurtër i jetës në akademinë tonë. Mbani mend, kjo është vetëm një fraksion i asaj që bëjmë këtu—përvoja reale është shumë më emocionuese.",
+      items: [
+        { title: "Ekselencë", coverImage: WORK_IMAGES.img1, caption: "Java e Modës në Milano nga Ezgi Özalan" },
+        { title: "Koleksion për Milano", coverImage: WORK_IMAGES.img2, caption: "Bukra Cani duke realizuar temën e saj" },
+        { title: "Punë Dore Aktive", coverImage: WORK_IMAGES.img3, caption: "Studenti duke punuar me manekin" },
+        { title: "Koncepti i Nuseve", coverImage: WORK_IMAGES.img4, caption: "Qëndisje me dorë" },
+        { title: "Të Gjitha në të Zezë", coverImage: WORK_IMAGES.img5, caption: "Megisa Margjegja për Javën e Modës në Tiranë" },
+        { title: "Kolorizëm Modern", coverImage: WORK_IMAGES.img6, caption: "Fabulence nga Ermelinda Metohu" },
+        { title: "Dizajn Dixhital", coverImage: WORK_IMAGES.img7, caption: "Duke punuar me CAD 3D" },
+        { title: "Manipulim Tekstili", coverImage: WORK_IMAGES.img8, caption: "Puna praktike është kyçi" }
+      ]
     },
     faq: [
       {
@@ -197,8 +173,17 @@ export const TRANSLATIONS: Record<Language, Translation> = {
     },
     work: {
       title: "What it's like",
-      description: "This is a tiny glimpse of what life is like at our school. Keep in mind this is only a fraction of what we do here—the real experience is much more exciting, filled with the hum of machines and the energy of creation.",
-      items: SHOWCASE_DATA
+      description: "This is a tiny glimpse of what life is like at our school. The real experience is much more exciting, filled with the energy of creation.",
+      items: [
+        { title: "Excellence", coverImage: WORK_IMAGES.img1, caption: "Milan Fashion Week from Ezgi Özalan" },
+        { title: "Collection for Milano", coverImage: WORK_IMAGES.img2, caption: "Bukra Cani realizing her own theme perfectly" },
+        { title: "Active Handwork", coverImage: WORK_IMAGES.img3, caption: "Student working with mannequin" },
+        { title: "Bridal Concept", coverImage: WORK_IMAGES.img4, caption: "Hand-stitched Embroidery" },
+        { title: "All in Black", coverImage: WORK_IMAGES.img5, caption: "Megisa Margjegja for Tirana Fashion Week" },
+        { title: "Modern Colorism", coverImage: WORK_IMAGES.img6, caption: "Ermelinda Metohu's Fabulence" },
+        { title: "Digital Design", coverImage: WORK_IMAGES.img7, caption: "Working with CAD 3D" },
+        { title: "Textile Manipulation", coverImage: WORK_IMAGES.img8, caption: "Practical work is key" }
+      ]
     },
     faq: [
       {
@@ -243,7 +228,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       slogan: "dove i sogni diventano realtà. dove la creatività diventa arte",
     },
     about: {
-      title: "Albanian Design Academy",
+      title: "Accademia di Design Albanese",
       description: "Da oltre 10 anni, ADA (Albanian Design Academy) è leader indiscusso nell'educazione alla moda in Albania. Situata nel cuore di Tirana, la nostra accademia ha costruito una solida reputazione diplomando oltre 100 studenti di successo. Offriamo il percorso perfetto per chiunque abbia passione per la moda, indipendentemente dall'esperienza precedente.",
       structureTitle: "Struttura di 2 Anni",
       structure: "Il nostro programma accademico dura 2 anni (Settembre - Giugno). Il Primo Anno è dedicato alle basi: schizzo, cucito e merceologia (tessuti). Il Secondo Anno si concentra sull'espressione artistica, la realizzazione di capi complessi e la preparazione del portfolio professionale.",
@@ -281,8 +266,17 @@ export const TRANSLATIONS: Record<Language, Translation> = {
     },
     work: {
       title: "Com'è la vita qui",
-      description: "Questo è un piccolo assaggio di com'è la vita nella nostra scuola. Tieni presente che questa è solo una frazione di ciò che facciamo qui: l'esperienza reale è molto più emozionante, piena del ronzio delle macchine e dell'energia della creazione.",
-      items: SHOWCASE_DATA
+      description: "Questo è un piccolo assaggio di com'è la vita nella nostra scuola. L'esperienza reale è molto più emozionante, piena dell'energia della creazione.",
+      items: [
+        { title: "Eccellenza", coverImage: WORK_IMAGES.img1, caption: "Milano Fashion Week di Ezgi Özalan" },
+        { title: "Collezione per Milano", coverImage: WORK_IMAGES.img2, caption: "Bukra Cani realizza perfettamente il suo tema" },
+        { title: "Lavoro Manuale Attivo", coverImage: WORK_IMAGES.img3, caption: "Studente al lavoro con manichino" },
+        { title: "Concetto Sposa", coverImage: WORK_IMAGES.img4, caption: "Ricamo a mano" },
+        { title: "Tutto in Nero", coverImage: WORK_IMAGES.img5, caption: "Megisa Margjegja per la Tirana Fashion Week" },
+        { title: "Colorismo Moderno", coverImage: WORK_IMAGES.img6, caption: "Fabulence di Ermelinda Metohu" },
+        { title: "Design Digitale", coverImage: WORK_IMAGES.img7, caption: "Lavorando con CAD 3D" },
+        { title: "Manipolazione Tessile", coverImage: WORK_IMAGES.img8, caption: "Il lavoro pratico è la chiave" }
+      ]
     },
     faq: [
       {
