@@ -2,19 +2,18 @@
 import { Language, Translation } from './types';
 
 export const COLORS = {
-  bg: '#111111',
-  accent: '#E4FF1A', // Dew Yellow
-  glass: 'rgba(255, 255, 255, 0.05)',
-  textMain: '#FFFFFF',
-  textMuted: '#A1A1A1',
+  bg: 'var(--bg)',
+  accent: 'var(--accent)',
+  glass: 'var(--glass)',
+  textMain: 'var(--text-main)',
+  textMuted: 'var(--text-muted)',
 };
 
 // Teacher Images
 const TEACHER_IMAGES = [
   "https://pixvid.org/images/2025/12/25/52O3M.png", // Elsida
   "https://pixvid.org/images/2025/12/25/52lVm.png", // Lije
-  "https://pixvid.org/images/2025/12/25/52lYB.png", // Ardi
-  "https://pixvid.org/images/2025/12/25/52lAf.png"  // Flutura
+  "https://pixvid.org/images/2025/12/25/52lYB.png"  // Ardi
 ];
 
 // Reusable Image Links for Student Work
@@ -69,18 +68,13 @@ export const TRANSLATIONS: Record<Language, Translation> = {
           role: "Profesor i Dizajnit",
           bio: "Vizionari. Një emër i njohur që kuron imazhin e figurave publike shqiptare. Ardi sjell profesionalizëm strikt dhe liri krijuese, duke ju mësuar si të krijoni skica ikonike dhe të paharrueshme.",
           image: TEACHER_IMAGES[2]
-        },
-        {
-          name: "Flutura Zakja",
-          role: "Profesore e Tekstileve",
-          bio: "Mjeshtrja e pëlhurave. Me 25 vite eksperiencë dhe mijëra studentë të trajnuar, Flutura ju mëson gjithçka mbi tekstilet, historinë e tyre dhe si të zgjidhni materialin perfekt për çdo projekt.",
-          image: TEACHER_IMAGES[3]
         }
       ]
     },
     work: {
       title: "Si është jeta këtu",
       description: "Ky është një vështrim i shkurtër i jetës në akademinë tonë. Mbani mend, kjo është vetëm një fraksion i asaj që bëjmë këtu—përvoja reale është shumë më emocionuese.",
+      expandNote: "Kliko mbi imazhet për t'i zmadhuar",
       items: [
         { title: "Ekselencë", coverImage: WORK_IMAGES.img1, caption: "Java e Modës në Milano nga Ezgi Özalan" },
         { title: "Koleksion për Milano", coverImage: WORK_IMAGES.img2, caption: "Bukra Cani duke realizuar temën e saj" },
@@ -112,7 +106,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
     ],
     contact: {
       title: "Na Kontaktoni",
-      subtitle: "Jemi këtu për t'ju përgjigjur pyetjeve tuaja. Na kontaktoni përmes kanaleve të mëposhtme ose përdorni chat-in live në këndin e poshtëm djathtas.",
+      subtitle: "Jemi këtu për t'ju përgjigjur pyetjeve tuaja. Na kontaktoni përmes kanaleve të mëposhtme.",
       address: "Rruga e Bogdaneve, 1001 Tiranë",
       email: "elsidapepa@yahoo.com",
       phone: "+355 68 241 2137",
@@ -121,6 +115,13 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       emailLabel: "NA SHKRUANI",
       phoneLabel: "TELEFON / WHATSAPP",
       followLabel: "NA NDIQNI"
+    },
+    whatsapp: {
+      floatingBtn: "Na shkruani në WhatsApp",
+      header: "Na shkruani në WhatsApp",
+      body: "Klikoni butonin më poshtë për të hapur WhatsApp dhe për të na shkruar direkt.",
+      footer: "Shënim: Mund të vonojmë deri në 3 orë për t'ju përgjigjur.",
+      btnLabel: "DËRGONI MESAZH"
     }
   },
   [Language.EN]: {
@@ -162,18 +163,13 @@ export const TRANSLATIONS: Record<Language, Translation> = {
           role: "Design Professor",
           bio: "The Visionary. A notable name styling Albanian public figures. Ardi brings strict professionalism and creative freedom, teaching you how to sketch iconic and memorable pieces for award-winning careers.",
           image: TEACHER_IMAGES[2]
-        },
-        {
-          name: "Flutura Zakja",
-          role: "Textile Expert",
-          bio: "The Fabric Master. With 25 years of experience and thousands of students trained, Flutura teaches you everything about textiles, their history, and how to choose the perfect fabric for any project.",
-          image: TEACHER_IMAGES[3]
         }
       ]
     },
     work: {
       title: "What it's like",
       description: "This is a tiny glimpse of what life is like at our school. The real experience is much more exciting, filled with the energy of creation.",
+      expandNote: "Click on images to expand",
       items: [
         { title: "Excellence", coverImage: WORK_IMAGES.img1, caption: "Milan Fashion Week from Ezgi Özalan" },
         { title: "Collection for Milano", coverImage: WORK_IMAGES.img2, caption: "Bukra Cani realizing her own theme perfectly" },
@@ -205,7 +201,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
     ],
     contact: {
       title: "Contact Us",
-      subtitle: "We are here to answer your questions. Reach out to us via any of the channels below or use the live chat in the bottom right corner.",
+      subtitle: "We are here to answer your questions. Reach out to us via any of the channels below.",
       address: "Rruga e Bogdaneve, 1001 Tirana",
       email: "elsidapepa@yahoo.com",
       phone: "+355 68 241 2137",
@@ -214,6 +210,13 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       emailLabel: "EMAIL US",
       phoneLabel: "CALL / WHATSAPP",
       followLabel: "FOLLOW US"
+    },
+    whatsapp: {
+      floatingBtn: "Text us via WhatsApp",
+      header: "Text us via WhatsApp",
+      body: "Click the button below to open WhatsApp and text us directly.",
+      footer: "Note: We might take up to 3 hours to respond.",
+      btnLabel: "SEND MESSAGE"
     }
   },
   [Language.IT]: {
@@ -255,18 +258,13 @@ export const TRANSLATIONS: Record<Language, Translation> = {
           role: "Professore di Design",
           bio: "Il Visionario. Un nome noto che cura l'immagine di figure pubbliche albanesi. Ardi porta professionalità rigorosa e libertà creativa, insegnandoti a creare schizzi iconici per carriere premiate.",
           image: TEACHER_IMAGES[2]
-        },
-        {
-          name: "Flutura Zakja",
-          role: "Esperta Tessile",
-          bio: "La Maestra dei Tessuti. Con 25 anni di esperienza e migliaia di studenti formati, Flutura ti insegna tutto sui tessuti, la loro storia e come scegliere il materiale perfetto per ogni progetto.",
-          image: TEACHER_IMAGES[3]
         }
       ]
     },
     work: {
       title: "Com'è la vita qui",
       description: "Questo è un piccolo assaggio di com'è la vita nella nostra scuola. L'esperienza reale è molto più emozionante, piena dell'energia della creazione.",
+      expandNote: "Clicca sulle immagini per ingrandirle",
       items: [
         { title: "Eccellenza", coverImage: WORK_IMAGES.img1, caption: "Milano Fashion Week di Ezgi Özalan" },
         { title: "Collezione per Milano", coverImage: WORK_IMAGES.img2, caption: "Bukra Cani realizza perfettamente il suo tema" },
@@ -298,7 +296,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
     ],
     contact: {
       title: "Contattaci",
-      subtitle: "Siamo qui per rispondere alle tue domande. Contattaci tramite i canali sottostanti o usa la live chat in basso a destra.",
+      subtitle: "Siamo qui per rispondere alle tue domande. Contattaci tramite i canali sottostanti.",
       address: "Rruga e Bogdaneve, 1001 Tirana",
       email: "elsidapepa@yahoo.com",
       phone: "+355 68 241 2137",
@@ -307,6 +305,13 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       emailLabel: "SCRIVICI",
       phoneLabel: "CHIAMA / WHATSAPP",
       followLabel: "SEGUICI"
+    },
+    whatsapp: {
+      floatingBtn: "Scrivici su WhatsApp",
+      header: "Scrivici su WhatsApp",
+      body: "Clicca il pulsante qui sotto per aprire WhatsApp e scriverci direttamente.",
+      footer: "Nota: Potremmo impiegare fino a 3 ore per rispondere.",
+      btnLabel: "INVIA MESSAGGIO"
     }
   }
 };

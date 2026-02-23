@@ -1,40 +1,31 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { HeroContent } from '../types';
-import { COLORS } from '../constants';
 
 interface HeroProps {
   content: HeroContent;
 }
 
 const FONTS = [
-  'font-serif', 
-  'font-sans', 
-  'font-mono', 
-  'font-playfair', 
-  'font-cinzel', 
-  'font-abril', 
-  'font-bebas', 
-  'font-bodoni', 
-  'font-dancing', 
-  'font-syne',
-  'font-montserrat'
+  'font-monoton', 'font-megrim', 'font-dotgothic', 'font-pressstart', 'font-rye', 'font-zilla',
+  'font-serif', 'font-sans', 'font-mono', 'font-playfair', 'font-cinzel', 'font-abril',
+  'font-bebas', 'font-bodoni', 'font-dancing', 'font-syne', 'font-montserrat', 'font-unifraktur',
+  'font-special', 'font-cormorant', 'font-almendra', 'font-marcellus', 'font-italiana',
+  'font-tenor', 'font-libre'
 ];
 
 const Hero: React.FC<HeroProps> = ({ content }) => {
-  const [fontIndices, setFontIndices] = useState([0, 0, 0]);
+  const [fontIndices, setFontIndices] = useState([0, 1, 2]);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    // Optimized: Shuffle slightly slower to save CPU
     const interval = setInterval(() => {
-      setFontIndices([
-        Math.floor(Math.random() * FONTS.length),
-        Math.floor(Math.random() * FONTS.length),
-        Math.floor(Math.random() * FONTS.length),
-      ]);
+      const indices: number[] = [];
+      while (indices.length < 3) {
+        const r = Math.floor(Math.random() * FONTS.length);
+        if (indices.indexOf(r) === -1) indices.push(r);
+      }
+      setFontIndices(indices);
     }, 180); 
-
     return () => clearInterval(interval);
   }, []);
 
@@ -51,12 +42,10 @@ const Hero: React.FC<HeroProps> = ({ content }) => {
       const dpr = window.devicePixelRatio || 1;
       const displayWidth = window.innerWidth;
       const displayHeight = window.innerHeight;
-      
       canvas.width = displayWidth * dpr;
       canvas.height = displayHeight * dpr;
       canvas.style.width = displayWidth + 'px';
       canvas.style.height = displayHeight + 'px';
-      
       ctx.scale(dpr, dpr);
     };
     window.addEventListener('resize', resize);
@@ -65,38 +54,35 @@ const Hero: React.FC<HeroProps> = ({ content }) => {
     const render = () => {
       const w = window.innerWidth;
       const h = window.innerHeight;
-      
       ctx.clearRect(0, 0, w, h);
       
-      const scale = Math.min(w, h) / 800; 
-      ctx.strokeStyle = COLORS.accent;
+      const isLightMode = document.body.classList.contains('light-mode');
+      // Darkened line color for light mode (pure black) and accent for dark mode
+      const accentColor = isLightMode ? '#000000' : '#E4FF1A';
+      
+      ctx.strokeStyle = accentColor;
       ctx.lineWidth = 1.2;
-      ctx.globalCompositeOperation = 'lighter'; 
+      ctx.shadowBlur = 0; // Performance optimization
+      ctx.globalCompositeOperation = isLightMode ? 'source-over' : 'lighter';
       
-      time += 0.006; 
-      
-      // OPTIMIZATION: Reduced from 28 to 16 lines
-      const numLines = 16; 
-      const centerY = h * 0.75;
-      
+      time += 0.005; 
+      const numLines = 12; 
+      const centerY = h * 0.7;
+      const scale = Math.min(w, h) / 800;
+
       for (let i = 0; i < numLines; i++) {
         ctx.beginPath();
         const ni = (i / numLines) * 2 - 1; 
+        // Increased baseAlpha for light mode to make lines darker/more visible as requested
+        const baseAlpha = isLightMode ? 0.18 : 0.25;
+        ctx.globalAlpha = (baseAlpha + 0.3 * (1 - Math.abs(ni))) * (0.8 + 0.2 * Math.sin(time + i));
 
-        ctx.globalAlpha = (0.15 + 0.5 * (1 - Math.abs(ni))) * (0.8 + 0.2 * Math.sin(time + i));
-
-        // OPTIMIZATION: Increased step size from 25 to 45 for better performance
-        for (let x = -40; x <= w + 40; x += 45) {
+        for (let x = -50; x <= w + 50; x += 60) {
             const nx = x / w; 
-            const breeze = Math.sin(nx * 3 + time * 0.5 + ni) * 60 * scale;
-            const twist = Math.cos(nx * 6 + time * 0.7 + i * 0.5) * 40 * scale;
-            const spacingMod = 1 + 0.4 * Math.sin(nx * 8 - time * 0.2);
-            const lineOffset = (i - numLines / 2) * (14 * scale * spacingMod);
-            const ripple = Math.sin(nx * 15 - time * 1.5) * 4 * scale;
-
-            const y = centerY + lineOffset + breeze + twist + ripple;
-            
-            if (x === -40) ctx.moveTo(x, y);
+            const breeze = Math.sin(nx * 2 + time * 0.4 + ni) * 50 * scale;
+            const twist = Math.cos(nx * 4 + time * 0.5 + i * 0.4) * 35 * scale;
+            const y = centerY + (i - numLines / 2) * (18 * scale) + breeze + twist;
+            if (x === -50) ctx.moveTo(x, y);
             else ctx.lineTo(x, y);
         }
         ctx.stroke();
@@ -106,7 +92,6 @@ const Hero: React.FC<HeroProps> = ({ content }) => {
     };
 
     render();
-
     return () => {
       window.removeEventListener('resize', resize);
       cancelAnimationFrame(animationFrameId);
@@ -114,17 +99,17 @@ const Hero: React.FC<HeroProps> = ({ content }) => {
   }, []);
 
   return (
-    <section id="hero" className="relative h-screen w-full flex flex-col items-center justify-start pt-32 md:pt-40 overflow-hidden bg-[#111111]">
+    <section id="hero" className="relative h-screen w-full flex flex-col items-center justify-start pt-32 md:pt-40 overflow-hidden bg-[var(--bg)]">
       <div className="z-20 text-center flex flex-col items-center w-full relative">
         <div className="flex space-x-4 md:space-x-12 select-none justify-center w-full mb-8">
-          <span className={`text-6xl md:text-[10rem] transition-all duration-75 leading-none ${FONTS[fontIndices[0]]}`} style={{ textShadow: `0 0 60px ${COLORS.accent}20`, color: '#FFFFFF' }}>A</span>
-          <span className={`text-6xl md:text-[10rem] transition-all duration-75 leading-none ${FONTS[fontIndices[1]]}`} style={{ textShadow: `0 0 80px ${COLORS.accent}40`, color: COLORS.accent }}>D</span>
-          <span className={`text-6xl md:text-[10rem] transition-all duration-75 leading-none ${FONTS[fontIndices[2]]}`} style={{ textShadow: `0 0 60px ${COLORS.accent}20`, color: '#FFFFFF' }}>A</span>
+          <span className={`text-6xl md:text-[10rem] transition-all duration-75 leading-none ${FONTS[fontIndices[0]]}`} style={{ textShadow: `0 0 50px var(--accent-glow)`, color: 'var(--text-main)' }}>A</span>
+          <span className={`text-6xl md:text-[10rem] transition-all duration-75 leading-none ${FONTS[fontIndices[1]]}`} style={{ textShadow: `0 0 70px var(--accent-glow)`, color: 'var(--accent)' }}>D</span>
+          <span className={`text-6xl md:text-[10rem] transition-all duration-75 leading-none ${FONTS[fontIndices[2]]}`} style={{ textShadow: `0 0 50px var(--accent-glow)`, color: 'var(--text-main)' }}>A</span>
         </div>
 
         <div className="max-w-4xl px-6 text-center z-10">
-            <div className="h-[1px] w-24 bg-[#E4FF1A] mx-auto mb-8 shadow-[0_0_20px_#E4FF1A]"></div>
-            <h2 className="text-lg md:text-2xl font-extralight tracking-[0.2em] leading-relaxed text-gray-200 uppercase font-playfair mix-blend-difference">
+            <div className="h-[1px] w-24 bg-[var(--accent)] mx-auto mb-8 shadow-[0_0_25px var(--accent-glow)] opacity-80"></div>
+            <h2 className="text-lg md:text-2xl font-extralight tracking-[0.2em] leading-relaxed text-[var(--text-muted)] uppercase font-playfair mix-blend-difference">
             {content.slogan}
             </h2>
         </div>
@@ -132,7 +117,7 @@ const Hero: React.FC<HeroProps> = ({ content }) => {
 
       <canvas 
         ref={canvasRef}
-        className="absolute top-0 left-0 w-full h-full z-10 pointer-events-none mix-blend-screen drop-shadow-[0_0_40px_rgba(228,255,26,0.4)]"
+        className="absolute top-0 left-0 w-full h-full z-10 pointer-events-none"
       />
     </section>
   );

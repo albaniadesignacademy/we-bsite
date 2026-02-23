@@ -1,5 +1,3 @@
-
-
 export enum Language {
   AL = 'AL',
   EN = 'EN',
@@ -54,6 +52,7 @@ export interface StudentWorkContent {
   title: string;
   description: string;
   items: WorkItem[];
+  expandNote: string;
 }
 
 export interface FAQItem {
@@ -74,6 +73,14 @@ export interface ContactContent {
   followLabel: string;
 }
 
+export interface WhatsAppContent {
+  floatingBtn: string;
+  header: string;
+  body: string;
+  footer: string;
+  btnLabel: string;
+}
+
 export interface Translation {
   nav: NavContent;
   hero: HeroContent;
@@ -82,4 +89,5 @@ export interface Translation {
   work: StudentWorkContent;
   faq: FAQItem[];
   contact: ContactContent;
+  whatsapp: WhatsAppContent;
 }

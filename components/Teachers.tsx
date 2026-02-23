@@ -1,25 +1,23 @@
 
-
 import React, { useState } from 'react';
 import { TeachersContent } from '../types';
 import { COLORS } from '../constants';
 
 interface TeachersProps {
   content: TeachersContent;
+  theme: 'dark' | 'light';
 }
 
-const Teachers: React.FC<TeachersProps> = ({ content }) => {
+const Teachers: React.FC<TeachersProps> = ({ content, theme }) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const handleInteraction = (idx: number) => {
-    // For mobile click or desktop hover-like interaction
     setHoveredIndex(prev => prev === idx ? null : idx);
   };
 
   return (
-    <section id="teachers" className="py-24 px-6 relative bg-[#111111] overflow-hidden">
+    <section id="teachers" className="py-24 px-6 relative bg-[var(--bg)] overflow-hidden">
         
-      {/* Unique SVG Filter for Teachers to ensure isolation */}
       <svg className="absolute w-0 h-0 pointer-events-none">
         <defs>
           <filter id="teacher-fabric-wave">
@@ -32,14 +30,14 @@ const Teachers: React.FC<TeachersProps> = ({ content }) => {
       <div className="container mx-auto max-w-7xl relative z-10">
         
         <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-playfair mb-4 text-white">
+            <h2 className="text-4xl md:text-5xl font-playfair mb-4 text-[var(--text-main)]">
                 {content.title}
             </h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">{content.description}</p>
+            <p className="text-[var(--text-muted)] max-w-2xl mx-auto">{content.description}</p>
         </div>
 
-        {/* Accordion Layout */}
-        <div className="flex flex-col md:flex-row gap-4 w-full md:h-[600px]">
+        {/* Accordion Layout - Centered for 3 items */}
+        <div className="flex flex-col md:flex-row gap-4 w-full md:h-[600px] justify-center">
             {content.profiles.map((teacher, idx) => {
                 const isHovered = hoveredIndex === idx;
                 
@@ -49,52 +47,31 @@ const Teachers: React.FC<TeachersProps> = ({ content }) => {
                         onMouseEnter={() => setHoveredIndex(idx)}
                         onMouseLeave={() => setHoveredIndex(null)}
                         onClick={() => handleInteraction(idx)}
-                        // NOTE: Removed overflow-hidden from here to let borders bleed out. 
-                        // Added z-index management to ensure expanded item borders sit on top.
                         className={`relative rounded-3xl transition-all duration-700 ease-in-out cursor-pointer
                             md:h-full
                             ${isHovered ? 'h-[500px] md:flex-[3] z-20' : 'h-[200px] md:flex-1 z-0'}
                             ${hoveredIndex !== null && !isHovered ? 'opacity-50' : 'opacity-100'}
                         `}
-                        style={{ 
-                            // Only apply shadow/border to the inner card visually, handled below.
-                        }}
                     >
-                        {/* 
-                            CHAOTIC OUTLINE EFFECT (Visible on Expand)
-                            - Uses -inset-5 to bleed outside the tile.
-                            - Uses the SVG filter for waviness.
-                            - Borders follow the rectangular shape (rounded-3xl + varying radii).
-                        */}
                         <div 
                             className={`absolute -inset-5 pointer-events-none transition-opacity duration-500 z-[-1]
                                 ${isHovered ? 'opacity-100' : 'opacity-0'}
                             `}
                             style={{ filter: 'url(#teacher-fabric-wave)' }}
                         >
-                             {/* Line 1 */}
-                             <div className="absolute inset-0 border-[2px] border-[#E4FF1A]/90 rounded-[30px] animate-teacher-wobble-1"></div>
-                             {/* Line 2 */}
-                             <div className="absolute inset-0 border-[1.5px] border-[#E4FF1A]/70 rounded-[35px] animate-teacher-wobble-2"></div>
-                             {/* Line 3 */}
-                             <div className="absolute inset-0 border-[1.5px] border-[#E4FF1A]/60 rounded-[28px] animate-teacher-wobble-3"></div>
-                             {/* Line 4 */}
-                             <div className="absolute inset-0 border-[1px] border-[#E4FF1A]/50 rounded-[32px] animate-teacher-wobble-4"></div>
-                             {/* Line 5 */}
-                             <div className="absolute inset-0 border-[1px] border-[#E4FF1A]/40 rounded-[25px] animate-teacher-wobble-5"></div>
+                             <div className="absolute inset-0 border-[0.8px] border-[var(--accent)] opacity-[var(--line-opacity)] rounded-[30px] animate-teacher-wobble-1"></div>
+                             <div className="absolute inset-0 border-[0.6px] border-[var(--accent)] opacity-[var(--line-opacity)] rounded-[35px] animate-teacher-wobble-2"></div>
+                             <div className="absolute inset-0 border-[0.6px] border-[var(--accent)] opacity-[var(--line-opacity)] rounded-[28px] animate-teacher-wobble-3"></div>
+                             <div className="absolute inset-0 border-[0.4px] border-[var(--accent)] opacity-[var(--line-opacity)] rounded-[32px] animate-teacher-wobble-4"></div>
+                             <div className="absolute inset-0 border-[0.4px] border-[var(--accent)] opacity-[var(--line-opacity)] rounded-[25px] animate-teacher-wobble-5"></div>
                         </div>
 
-                        {/* 
-                            INNER CARD CONTENT CONTAINER
-                            This handles the clipping of the image and the actual background/border of the tile.
-                        */}
-                        <div className="relative w-full h-full rounded-3xl overflow-hidden bg-[#111111]"
+                        <div className="relative w-full h-full rounded-3xl overflow-hidden bg-[var(--bg)]"
                              style={{
-                                border: isHovered ? `1px solid ${COLORS.accent}` : '1px solid transparent',
-                                boxShadow: isHovered ? `0 0 30px ${COLORS.accent}20` : 'none',
+                                border: isHovered ? `1px solid var(--accent)` : '1px solid var(--glass-border)',
+                                boxShadow: isHovered ? `0 0 30px var(--accent-glow)` : 'none',
                              }}
                         >
-                            {/* Background Image with Overlay */}
                             <div className="absolute inset-0 z-0">
                                 <img 
                                     src={teacher.image} 
@@ -108,32 +85,28 @@ const Teachers: React.FC<TeachersProps> = ({ content }) => {
                                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
                             </div>
 
-                            {/* Text Content */}
                             <div className="absolute bottom-0 left-0 w-full p-6 md:p-8 z-10 flex flex-col justify-end h-full">
-                                
-                                {/* Static Info */}
                                 <div className={`transition-all duration-500 ${isHovered ? 'mb-4' : 'mb-0'}`}>
-                                    <h3 className="text-2xl md:text-3xl font-bold text-white font-syne leading-none mb-2 drop-shadow-lg">
+                                    <h3 className="text-2xl md:text-3xl font-bold text-white font-syne leading-none mb-3 drop-shadow-lg">
                                         {teacher.name}
                                     </h3>
-                                    <p className="text-[#E4FF1A] font-mono text-xs uppercase tracking-widest drop-shadow-md">
+                                    {/* Role Readability Capsule - Role color set to white for light mode specifically */}
+                                    <span className={`inline-block px-3 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/10 font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] drop-shadow-md ${theme === 'light' ? 'text-white' : 'text-[var(--accent)]'}`}>
                                         {teacher.role}
-                                    </p>
+                                    </span>
                                 </div>
 
-                                {/* Expandable Description */}
                                 <div 
                                     className={`overflow-hidden transition-all duration-700 ease-in-out ${
                                         isHovered ? 'max-h-60 opacity-100' : 'max-h-0 opacity-0'
                                     }`}
                                 >
-                                    <p className="text-gray-200 text-sm md:text-base leading-relaxed border-t border-[#E4FF1A]/50 pt-4 mt-2">
+                                    <p className="text-gray-200 text-sm md:text-base leading-relaxed border-t border-[var(--accent)]/50 pt-4 mt-2">
                                         {teacher.bio}
                                     </p>
                                 </div>
                             </div>
 
-                            {/* Indicator Icon */}
                             {!isHovered && (
                                 <div className="absolute bottom-6 right-6 z-20 md:top-6 md:bottom-auto">
                                     <span className="text-white text-xl bg-black/20 p-2 rounded-full backdrop-blur-sm">+</span>
@@ -145,10 +118,6 @@ const Teachers: React.FC<TeachersProps> = ({ content }) => {
             })}
         </div>
         
-        {/* Keyframes for Teachers 
-            We use pixel values for border-radius to keep the rectangular "Tile" shape 
-            while allowing the lines to breathe and the SVG filter to do the heavy lifting for "waviness".
-        */}
         <style>{`
             @keyframes teacher-wobble-1 {
                 0%, 100% { transform: scale(1) translate(0,0); border-radius: 30px; }

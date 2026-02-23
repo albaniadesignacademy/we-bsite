@@ -1,5 +1,4 @@
 
-
 import { GoogleGenAI, GenerateContentResponse, Chat } from "@google/genai";
 
 const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
@@ -22,7 +21,6 @@ export const createChatSession = (): Chat => {
       - Elsida Pepa (Owner/Prof): 11 years exp, teaches sewing/cutting/CAD.
       - Lije Gurthi (Mentor): 35+ years exp, 30 years own atelier.
       - Ardi Asllani (Prof): Notable designer for public figures, teaches design/sketching.
-      - Flutura Zake (Prof): Textile expert, 25 years exp.
       
       INSTRUCTIONS:
       - Be professional, short, and catchy.
